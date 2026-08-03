@@ -1,0 +1,206 @@
+body {                               /* modifie le corps de la page */
+    background-color: #e8f4fc;  /* couleur de fond */ 
+    font-family: Arial, sans-serif; /* police de la page */ 
+    line-height: 1.6; /* augmente l'espace entre les lignes de texte */ 
+}
+h1{                     /* style du titre principal, utilisé pour modifier un titre ou sous-tire h1.h6 */ 
+    color: darkblue;  /* couleur du titre principal */ 
+    text-align: center; /*  alignement du texte : left, right, center, justify */
+}
+.sous-titre{  /* appelle une classe spécifiée de html pour le modifier, uniquement cette classe  */
+    text-align: center;
+    font-size: 22px;
+}
+header{  /* modifie l'emplacement, l'espacement du header */
+    margin-bottom: 40px;
+}
+section{        /* modifie les sections, leurs emplacements et espacements */ 
+    margin-bottom: 30px;
+    background-color: white; /* met une couleur de fond au niveau de chaque section */ 
+    padding: 20px;   /* entoure chaque section d'un encadrement avec un certain espacement */ 
+    border-radius: 10px; /* arrondis les coins de cet encadrement d'un certain espacement */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+}
+.container {  /* appelle la classe div pour appliquer un style */
+    max-width: 900px; /* applique une certaine larger maximale */
+    margin: auto; /* calcule automatiquement les marges gauche et droite afin de centrer le conteneur */
+    padding: 30px;
+}
+footer{  /* modifie l'alignement du bas de page */
+    text-align: center;
+    color: gray;
+    margin-top: 40px;
+}
+nav{  /* modifie le bloc entier de la navigation */
+    text-align: center;
+    margin-top: 20px;
+}
+nav a{ /* modifie chaque élt du bloc de la navigation */
+    text-decoration: none;
+    color: darkblue;
+    font-weight: bold;
+    margin: 0 15px;
+}
+nav a:hover{ /* hover signifie de changer de style lorsqu'on clique sur un élt de navigation */
+    color: royalblue;
+}
+/* utilisé pour tester le fonctionnement de flex par des boites. */
+/*.test-flex{ */
+/*    display: flex; permet d'afficher des boites, transforme une colonne en une ligne */ 
+/*    justify-content: space-evenly; permet de déplacer horizontalement */
+/*    align-items: stretch; permet de déplacer verticalement */
+/*    height: 180px; */
+/*    background: white; */
+/*} */
+/*.boite{  modifie chacune des boites */
+/*    background-color: darkblue; */
+/*    color: white; */
+/*    padding: 20px; */
+/*    margin: 10px; */
+/*} */
+/*.boite:nth-child(2){ */
+/*    height: 120px; */
+/*} fin du test flexbox pour les boites */
+/*.profil{ utilisé pour tester flexbox pour la carte de profil */
+/*    display: flex; */
+/*    align-items: center; */
+/*    gap: 40px; */
+/*    background-color: white; */
+/*    padding: 30px; */
+/*    border-radius: 10px; */
+/*    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15); */
+/*    margin-bottom: 30px; */
+/*} */
+/*.photo{ */
+/*    width: 200px; */
+/*    height: 200px; */
+/*    background-color: darkblue; */
+/*    border-radius: 50%; */
+/*    color: white; */
+/*    display: flex; */
+/*    justify-content: center; */
+/*    align-items: center; */
+/*    font-size: 22px; */
+/*} */
+/*.infos h2{ */
+/*    margin-bottom: 15px; */
+/*} */
+/*.infos p{ */
+/*    margin-bottom: 10px; */
+/*    font-size: 20px; */
+/*} fin du test de flexbox pour la carte profil */
+/* ici en bas, utilise flexbox pour la grille de compétences  */
+.expertises-grid{
+    display: flex;
+    gap: 20px;
+    align-items: stretch;
+    flex-wrap: wrap; /* (pour tablettes et phones, rend la mise en page naturellement flexible) propriété du flexbox essayant de maintenir toutes les cartes sur une seule ligne, mème quand l'espace devient insuffisant. Les cartes ont ainsi l'autorisation de passer à la ligne suivante */
+}
+.expertises-card{
+    flex: 1;      /* assure le role de justify-center de chaque competences-card */
+/*    flex: 1 1 250px; /* (pour tablettes et phones) la 1è valeur autorise la carte à grandir, la 2è l'autorise à rétrécir, la 3è représente sa largeur de départ souhaitée. Ainsi, si l'écran manque de place, une carte peut passer sur la ligne suivante   */
+    min-width: 0;
+    background-color: #f8fbfe;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #d7e6f2;
+}
+.expertises-card h3{
+    color: darkblue;
+    margin-top: 0;
+    min-height: 60px;
+}
+.expertises-card ul{
+    padding-left: 22px;
+    margin-bottom: 0;
+    margin-top: 20px;
+}
+/* (pour tablettes et phones), lance la première media query */
+@media (max-width: 768px){ /* (impose une disposition spécifique pour les petits écrans) applique les règles suivantes uniquement lorsque la largeur de l'écran et inférieure ou égale à 768 pixels */
+    .container{
+        padding: 15px;
+    }
+    .expertises-grid{ /* à l'intérieur, transforme les 3 cartes en 1 colonne verticale */
+        flex-direction: column;
+    }
+    nav a {  /* le menu passe également en colonne */
+        display: block;
+        margin: 10px 0;
+    }
+    h1 {
+        font-size: 28px;
+    }
+    .sous-titre{
+        font-size: 18px;
+    }
+}
+/* on génère maintenant les modifications des cartes du parcours professionnel, sans utiliser flexbox */
+.parcours-card{
+    margin-bottom: 25px;
+    min-width: 0;
+    background-color: #f8fbfe;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #d7e6f2;
+}
+.parcours-card h3{
+    color: darkblue;
+    margin-top: 0;
+    min-height: 60px;
+}
+.parcours-card ul{
+    padding-left: 22px;
+    margin-bottom: 0;
+    margin-top: 20px;
+}
+.parcours-card p{
+    margin-top: -30px;
+    color: #666;
+    font-size: 0.95rem;
+}
+/* comme pour le parcours professionnel, on utilise également les modifications des formations sans utiliser flexbox */
+.formations-card{
+    margin-bottom: 25px;
+    min-width: 0;
+    background-color: #f8fbfe;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #d7e6f2;
+}
+.formations-card h3{
+    color: darkblue;
+    margin-top: 0;
+    min-height: 60px;
+}
+.formations-card ul{
+    padding-left: 22px;
+    margin-bottom: 0;
+    margin-top: 20px;
+}
+.formations-card p{
+    margin-top: -30px;
+    color: #666;
+    font-size: 0.95rem;
+}
+/* comme pour le parcours professionnel, on utilise également les modifications des publications sans utiliser flexbox */
+.publications-card{
+    margin-bottom: 25px;
+    min-width: 0;
+    background-color: #f8fbfe;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #d7e6f2;
+}
+.publications-card h3{
+    color: darkblue;
+    margin-top: 0;
+    min-height: 60px;
+}
+.publications-card ul{
+    padding-left: 22px;
+    margin-bottom: 0;
+    margin-top: 20px;
+}
+.publications-card li{
+    padding-bottom: 20px;
+}

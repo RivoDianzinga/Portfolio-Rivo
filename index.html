@@ -1,0 +1,242 @@
+<!DOCTYPE html>  <!-- Entète obligatoire de tout fichier html -->
+<html lang="fr">  <!-- autorise les accents de la langue française -->
+
+<head>  <!-- Le nom qui figure sur le lien de la page -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- permet l'adaptation de la page aux tablettes -->
+    <title>Portfolio - Rivo Dianzinga</title> <!-- le itre lui-mème sur l'onglet de la page -->
+    <link rel="stylesheet" href="css/style.css"> <!-- appelle les règles du fichier css -->
+</head>
+
+<body> <!-- débute le corps de la page -->
+    <div class="container"> <!-- boite servant à regrouper plusieurs éléments pour leur appliquer un style commun -->
+<header> <!-- entète de la page, première idée qui sera lue à la suite d'une recherche internet -->
+    <h1>Bienvenue sur le portfolio de Rivo Dianzinga</h1> <!-- les h1..h6 sont les titres et sous-titres -->
+    <p class="sous-titre"> <!-- p sont les paragraphes, une classe a été ajoutée pour spécifier ce paragraphe, dans le but de le modifier par la css -->
+        Physicien Computationnel (PhD) | R&amp;D Innovation | Développeur d'applications en formation 
+    </p>
+    <nav> <!-- ouvre une zone de navigation pour ses différents élts, le nav est le parent et les a sont les enfants -->
+        <a href="#apropos">A propos</a>   <!-- crée le lien (anchor) de chaque élt de la zone de navigation -->
+        <a href="#expertises">Expertises</a>
+        <a href="#parcours">Parcours professionnel</a>
+        <a href="#formations">Formations</a>
+        <a href="#publications">Publications scientifiques</a>
+        <a href="#contact">Contact</a> <!-- le href permet d'aller à l'élt dont l'identifiant est contact-->
+    </nav>
+
+</header>
+
+<main> <!-- le contenu de la page -->
+<!-- <div class="test-flex"> tester pour comprendre le fonctionnement de flexbox par des boites
+    <div class="boite">A</div>
+    <div class="boite">B</div>
+    <div class="boite">C</div>
+</div> -->
+<!--<section class="profil">-- tester flexbox pour la carte profil>
+<!--    <div class="photo"> -->
+<!--        Photo -->
+<!--        <img src="images/rivo.jpg" alt="Photo de Rivo"> -->
+<!--    </div> -->
+<!--    <div class="info"> -->
+<!--        <h2>Rivo Dianzinga</h2> -->
+<!--        <p>Physicien Computationnel (PhD)</p> -->
+<!--        <p>Développeur d'applications en formation</p> -->
+<!--        <p>📍Lyon</p>  -->
+<!--        <p>✉ dmamyrivo@gmail.com</p> -->
+<!--    </div> -->
+<!--</section>-->
+
+    <section id="apropos"> <!-- les différentes parties de la page -->
+        <h2>A propos</h2>
+        <p> Physicien computationnel (PhD) spécialisé en modélisation numérique des matériaux, calcul 
+scientifique et simulations basées sur la théorie de la fonctionnelle de la densité (DFT). Expérience en
+recherche académique (CNRS, CEA) et en innovation industrielle (R&amp;D et conseil, Berger-Levrault). Expertise en
+simulations de structure électronique, développement d'outils scientifiques en Python et Fortran,
+ainsi qu'en analyse de données scientifiques. Je suis actuellement concepteur développeur d'applications 
+en formation professionnelle continue au M2I, afin de contribuer par la suite, scientifiquement, techniquement 
+et opérationnellement dans des projets de la physique
+appliquée tels que le nucléaire, l'énergie impliquant en particulier la modélisation et la simulation. </p>
+    </section>
+
+    <section id="expertises"> <!-- identifiant utilisé pour référer un élt unique  -->
+        <h2>Expertises</h2>
+        <div class="expertises-grid"> <!-- crée une grille pour les compétences -->
+            <div class="expertises-card">
+                <h3>Physique computationnelle</h3>
+                <ul>
+                    <li>Python</li>
+                    <li>Fortran</li>
+                    <li>Bash</li>
+                    <li>DFT (VASP, ABINIT)</li>
+                    <li>Simulation numérique</li>
+                    <li>Modélisation atomistique</li>
+                    <li>Calcul scientifique</li>
+                    <li>Analyse de données scientifiques </li>
+                    <li>Visualisation scientifique de données (Xmgrace, Gnuplot)</li>
+                </ul>
+            </div>
+
+           <div class="expertises-card">
+                <h3>R&amp;D Innovation</h3>
+                <ul>
+                    <li>Conseil, financement, management</li>
+                    <li>Crédit d'impot recherche, subventions</li>
+                    <li>Rédaction technique et scientifique (Latex, Office, Linux)</li>
+                    <li>Modélisation financière (Excel)</li>
+                    <li>Veille technologique et innovation</li>
+                    <li>Valorisation de projets</li>
+                </ul>
+            </div>
+            
+           <div class="expertises-card">
+                <h3>Développement d'applications</h3>
+                <ul>
+                    <li>Visual Studio Code</li>
+                    <li>HTML</li>
+                    <li>CSS</li>
+                </ul>
+            </div>            
+
+        </div>
+<!--        <ul> <!-- lance une liste, le ul est le parent, et les li sont les enfants --> 
+<!--            <li>Python</li> <!-- chaque élément de la liste -->
+<!--            <li>Fortran</li> -->
+<!--            <li>Bash</li> -->
+<!--            <li>HTML</li> -->
+<!--            <li>Git</li> -->
+<!--            <li>Calcul scientifique</li> -->
+<!--            <li>Simulation numérique</li> -->
+<!--            <li>Modélisation atomistique</li> -->
+<!--        </ul> -->
+
+    </section>
+
+    <section id="parcours">
+        <h2>Parcours professionnel</h2>
+<!-- ici pour le parcours professionnel, on utilise juste des boites, pour les superposer -->
+        <div class="parcours-card">
+            <h3>Stagiaire concepteur développeur d'applications à ... (à venir)</h3>
+            <p>2027 • Lyon (France)</p>
+            <ul>
+                <li>...</li>
+                <li>...</li>
+                <li>...</li>
+                <li>...</li>
+                <li>...</li>
+            </ul>
+        </div>
+
+        <div class="parcours-card">
+            <h3>Ingénieur de recherche à Berger-Levrault</h3>
+            <p>2022-2025 • Lyon (France)</p>
+            <ul>
+                <li>Valorisation de projets R&amp;D et innovation</li>
+                <li>Structuration et analyse scientifique de projets issus de travaux de recherhe doctorale</li>
+                <li>Modélisation financière et technique de projets innovants (CIR)</li>
+                <li>Rédaction de dossiers scientifiques et techniques</li>
+                <li>Thématiques: génie logiciel, intelligence artificielle, data et optimisation</li>
+            </ul>
+        </div>
+        <div class="parcours-card">
+            <h3>Consultant innovation R&amp;D à Eureka CI</h3>
+            <p>2020-2022 • Paris (France)</p>
+            <ul>
+                <li>Accompagnement de PME innovantes sur projets R&amp;D et financement de
+l'innovation</li>
+                <li>Structuration de dossiers CIR et subventions</li>
+                <li>Analyse scientifique et technique de projets technologiques</li>
+                <li>Conseil en stratégie innovation et valorisation de la recherche</li>
+            </ul>
+        </div>
+        
+        <div class="parcours-card">
+            <h3>Ingénieur de recherche au CEA</h3>
+            <p>2018-2020 • Marseille (France)</p>
+            <ul>
+                <li>Réalisation de simulations DFT pour l'étude de matériaux nucléaires</li>
+                <li>Etude des défauts électroniques dans les oxydes mixtes d'uranium</li>
+                <li>Développement de workflows scientifiques sous Python, Fortran et ABINIT</li>
+                <li>Analyse des propriétés électroniques et énergétiques de matériaux complexes</li>
+            </ul>
+        </div>
+
+        <div class="parcours-card">
+            <h3>Ingénieur de recherche au CNRS</h3>
+            <p>2017-2018 • Montpellier (France)</p>
+            <ul>
+                <li>Développement de méthodes de simulation électronique pour matériaux
+énergétiques</li>
+                <li>Implémentation de modèles DFT en Fortran</li>
+                <li>Simulation de matériaux pour battéries lithium-ion sous VASP</li>
+                <li>Visualisation et analyse de données scientifiques avec Python</li>
+            </ul>
+        </div>
+        
+    </section>
+
+    <section id="formations">
+        <h2>Formations</h2>
+
+        <div class="formations-card">
+            <h3>Concepteur développeur d'applications au M2I</h3>
+            <p>2026-2027 • Lyon (France)</p>
+            <ul>
+                <li>...</li>
+                <li>...</li>
+                <li>...</li>
+                <li>...</li>
+            </ul>
+
+        </div>
+
+        <div class="formations-card">
+            <h3>Doctorat en physique computationnelle à l'université de Bordeaux</h3>
+            <p>2013-2016 • Bordeaux (France)</p>
+            <ul>
+                <li>Développement de méthodes numériques à croissance linéaire</li>
+                <li>Optimisation d'algorithmes de simulation électronique</li>
+                <li>Développement de codes scientifiques en Fortran</li>
+                <li>Post-traitement et analyse de données sous Python</li>
+            </ul>
+        </div>
+
+    </section>
+
+    <section id="publications">
+        <h2>Publications scientifiques</h2>
+        <div class="publications-card">
+            <h3>Sélection de publications internationales en modélisation numérique 
+                des matériaux et physique computationnelle</h3>
+                <ul>
+                    <li>Dianzinga R., <em>et al</em> : "<em>Generalized canonical purification for
+density matrix minimization</em>", Journal of Chemical Physics <strong>144</strong>, 091102 (2016)
+<br> <span style="color: #666;">DOI :</span> <a href="https://doi.org/10.1063/1.4943213" target="_blank">Consulter la publication</a></li>
+                    <li>Dianzinga R., <em>et al</em> : "<em>Notes on density matrix perturbation
+theory</em>", Journal of Chemical Physics <strong>153</strong>, 164105 (2020)
+<br> <span style="color: #666;">DOI :</span> <a href="https://doi.org/10.1063/5.0022244" target="_blank">Consulter la publication</a></li>
+                    <li>Dianzinga R., <em>et al</em> : "<em>Theoretical Investigations of charged vacancies and
+clusters in UXO2 (X=La, Ce, Pu, Am)</em>", Journal of Applied Physics <strong>132</strong>, 075110 (2022)
+<br> <span style="color: #666;">DOI :</span> <a href="https://doi.org/10.1063/5.0098635" target="_blank">Consulter la publication</a></li>
+             
+                </ul>
+        </div>
+
+    </section>
+
+    <section id="contact">
+        <h2>Contact</h2>
+        <p> <strong> E-mail : </strong> dmamyrivo@gmail.com </p> <!-- le strong permet de mettre en gras-->
+        <p> <strong> Ville : </strong> Lyon </p>
+    </section>
+</main>
+
+<footer> <!-- le bas d'une page contenant les informations personnels -->
+    <p>
+        © 2026 - Rivo Dianzinga
+    </p>
+</footer>
+</div>
+</body>
+
+
+</html>
