@@ -146,18 +146,20 @@ nav a:hover{ /* hover signifie de changer de style lorsqu'on clique sur un élt 
 .parcours-card h3{
     color: darkblue;
     margin-top: 0;
-    min-height: 60px;
+    margin-bottom: 12px;
 }
 .parcours-card ul{
     padding-left: 22px;
     margin-bottom: 0;
-    margin-top: 20px;
+    margin-top: 0;
 }
 .parcours-card p{
-    margin-top: -30px;
+    margin-top: 0;
+    margin-bottom: 20px;
     color: #666;
     font-size: 0.95rem;
 }
+
 /* comme pour le parcours professionnel, on utilise également les modifications des formations sans utiliser flexbox */
 .formations-card{
     margin-bottom: 25px;
@@ -170,15 +172,16 @@ nav a:hover{ /* hover signifie de changer de style lorsqu'on clique sur un élt 
 .formations-card h3{
     color: darkblue;
     margin-top: 0;
-    min-height: 60px;
+    margin-bottom: 12px;
 }
 .formations-card ul{
     padding-left: 22px;
     margin-bottom: 0;
-    margin-top: 20px;
+    margin-top: 0;
 }
 .formations-card p{
-    margin-top: -30px;
+    margin-top: 0;
+    margin-bottom: 20px;
     color: #666;
     font-size: 0.95rem;
 }
