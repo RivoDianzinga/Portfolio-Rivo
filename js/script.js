@@ -17,8 +17,8 @@
 // Ici on travaille maintenant sur notre projet de portfolio
 // Après avoir créé un id et un bouton dans le html, on les récupère
 // bouton et son objet navigateur des publications
-const boutonPublications = document.getElementById("btn-publications");
-const publications = document.getElementById("publications-list");
+const boutonPublications = document.getElementById("btn-publications"); // id du bouton concerné
+const publications = document.getElementById("publications-list"); // id de l'objet, c-à-d le div concerné
 
 // bouton et son objet navigateur des formations
 const boutonFormations = document.getElementById("btn-formations");
@@ -31,6 +31,29 @@ const parcours = document.getElementById("parcours-list");
 // bouton et son objet navigateur des expertises
 const boutonExpertises = document.getElementById("btn-expertises");
 const expertises = document.getElementById("expertises-list");
+
+// bouton et son objet navigateur de l'adresse email
+const boutonCopierEmail = document.getElementById("btn-copier-email");
+const email = "dmamyrivo@gmail.com"
+//console.dir(boutonCopierEmail);
+
+// objet navigateur crée par le navigateur lui-mème. pas besoin de les déclarer 
+// car ils existent déjà dans l'environnement javascript de la page
+// console.dir(navigator);
+// console.dir(navigator.clipboard);
+// commande pour copier coller l'email
+boutonCopierEmail.addEventListener("click", function(){
+    navigator.clipboard.writeText(email)
+    .then(function(){
+        boutonCopierEmail.textContent = "Copié !";
+        setTimeout(function(){
+            boutonCopierEmail.textContent = "Copier";
+        },1500);
+    })
+    .catch(function(erreur){
+        console.error("Erreur lors de la copie :", erreur);
+    });
+});
 
 // console.dir(publications); // permet de lister dans la console toutes les propriétés d'un objet du navigateur
 

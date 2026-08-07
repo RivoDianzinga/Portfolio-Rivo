@@ -280,3 +280,40 @@ nav a:hover{ /* hover signifie de changer de style lorsqu'on clique sur un élt 
     background-color: darkblue;
     color: white;
 }
+/* la class du bouton "télecharger mon CV" */
+.btn-cv{
+    display: inline-block;
+    padding: 10px 16px;
+    background-color: darkblue;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.btn-cv:hover{
+    background-color: navy;
+}
+/* la class des contact */
+.liens-contact{
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+.btn-contact{
+    display: inline-block;
+    padding: 10px 16px;
+    background-color: darkblue;
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    font-family: inherit;
+    font-size: 0.95rem;
+    cursor: pointer;
+}
+.btn-contact:hover{
+    background-color: navy;
+}
