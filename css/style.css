@@ -197,13 +197,86 @@ nav a:hover{ /* hover signifie de changer de style lorsqu'on clique sur un élt 
 .publications-card h3{
     color: darkblue;
     margin-top: 0;
-    min-height: 60px;
+    margin-bottom: 12px;
 }
 .publications-card ul{
     padding-left: 22px;
     margin-bottom: 0;
-    margin-top: 20px;
+    margin-top: 0px;
 }
 .publications-card li{
     padding-bottom: 20px;
+}
+#btn-publications{
+    margin-top: 0px;
+    margin-bottom: 25px;
+
+}
+#publications-list{
+    border: none;
+}
+#publications-list.visible{
+    border: 1px solid #d7e6f2;
+}
+/* #publications-list{ /* on a utilisé # car publications-list est un identifiant et pas une classe */
+/*    display: none; utilisé pour une affichage statique */ 
+/*}*/ 
+/* ici, on crée une classe d'animation CSS dynamique pour afficher progressivement les publications */
+/*#publications-list{ /* classe d'état initial */
+/*    max-height: 0; /*
+/*    opacity: 0; opacity et transform sont en commentaires car peuvent créer des images floues, inconfortable pour les yeux  */ 
+/*    overflow: hidden; /* empêche le contenu de dépasser lorsque la hauteur est proche de zéro */
+/*    transform: translateY(-10px); */
+/*    padding-top: 0;
+    padding-bottom: 0;
+    margin-bottom: 0;
+    border-width: 0;
+    transition:       /* indiquant au navigateur la durée de l'évolution */
+/*        max-height 0.35s ease,
+/*        opacity 0.4s ease, */
+/*        transform 0.4s ease, */
+/*        padding 0.35s ease,
+        margin 0.35s ease;
+}
+#publications-list.visible{ /* la classe qui représente l'état visible */
+/*    max-height: 1000px; /* grandeur animée évoluant de 0 à 1000px */
+/*    opacity: 1; /* grandeur animée évoluant de 0 à 1 */
+/*    transform: translateY(0); /* grandeur animée faisant légèrement descendre la carte */
+/*    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-bottom: 25px;
+    border-width: 1px;
+} */
+
+/* on définit ici une classe commune utilisable pour toutes les grandes sections */ 
+.contenu-deroulant{ /* classe d'état initial */
+    max-height: 0; 
+    overflow: hidden; 
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-bottom: 0;
+    transition:       /* indiquant au navigateur la durée de l'évolution */
+        max-height 0.35s ease,
+        padding 0.35s ease,
+        margin 0.35s ease;
+}
+.contenu-deroulant.visible{ /* la classe qui représente l'état visible */
+    max-height: 3000px; /* grandeur animée évoluant de 0 à 1000px */
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-bottom: 25px;
+}
+/* on harmonise les boutons des sections en leur attribuant une classe commune */
+.btn-section{
+    padding: 10px 16px;
+    border: 1px solid darkblue;
+    border-radius: 6px;
+    background-color: white;
+    color: darkblue;
+    font-size: 0.95 rem;
+    cursor: pointer;
+}
+.btn-section:hover{
+    background-color: darkblue;
+    color: white;
 }
