@@ -302,7 +302,9 @@ nav a:hover{ /* hover signifie de changer de style lorsqu'on clique sur un élt 
     margin-top: 20px;
 }
 .btn-contact{
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
     padding: 10px 16px;
     background-color: darkblue;
     color: white;

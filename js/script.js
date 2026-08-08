@@ -34,7 +34,9 @@ const expertises = document.getElementById("expertises-list");
 
 // bouton et son objet navigateur de l'adresse email
 const boutonCopierEmail = document.getElementById("btn-copier-email");
-const email = "dmamyrivo@gmail.com"
+const email = "dmamyrivo@gmail.com";
+const texteCopierEmail = document.getElementById("texte-copier-email");
+const iconeCopierEmail = document.getElementById("icone-copier-email");
 //console.dir(boutonCopierEmail);
 
 // objet navigateur crée par le navigateur lui-mème. pas besoin de les déclarer 
@@ -45,13 +47,20 @@ const email = "dmamyrivo@gmail.com"
 boutonCopierEmail.addEventListener("click", function(){
     navigator.clipboard.writeText(email)
     .then(function(){
-        boutonCopierEmail.textContent = "Copié !";
-        setTimeout(function(){
-            boutonCopierEmail.textContent = "Copier";
-        },1500);
+        texteCopierEmail.textContent = "Copié !";
+        iconeCopierEmail.classList.remove("fa-regular", "fa-copy"); // style de l'icone, icone représentant la copie
+        iconeCopierEmail.classList.add("fa-solid", "fa-check"); // icone de la coche par Font Awesome
+        setTimeout(function(){ // fonction obligeant de passer de "copié!" à "copier" après 1500ms
+            texteCopierEmail.textContent = "Copier";
+            iconeCopierEmail.classList.remove("fa-solid", "fa-check"); // style de l'icone, icone représentant la copie
+            iconeCopierEmail.classList.add("fa-regular", "fa-copy");
+        },2000);
     })
-    .catch(function(erreur){
-        console.error("Erreur lors de la copie :", erreur);
+    .catch(function(){
+        texteCopierEmail.textContent = "Erreur";
+        setTimeout(function(){
+            texteCopierEmail.textContent = "Copier";
+        }, 2000);        
     });
 });
 

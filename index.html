@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- permet l'adaptation de la page aux tablettes -->
     <title>Portfolio - Rivo Dianzinga</title> <!-- le itre lui-mème sur l'onglet de la page -->
     <link rel="stylesheet" href="css/style.css"> <!-- appelle les règles du fichier css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"> <!-- charge la bibliothèque externe pour les icones-->
 </head>
 
 <body> <!-- débute le corps de la page -->
@@ -248,12 +249,21 @@ clusters in UXO2 (X=La, Ce, Pu, Am)</em>", Journal of Applied Physics <strong>13
         <h2>Contact</h2>
         <p> 
             <strong> E-mail : </strong> dmamyrivo@gmail.com 
-            <button id="btn-copier-email" class="btn-contact">Copier</button>
+            <button id="btn-copier-email" class="btn-contact">
+                <i id="icone-copier-email" class="fa-regular fa-copy"></i> <!-- i sert de conteneur pour l'icone pour afficher des icones, et les classes proviennent de la bibliothèque externe Font Awesome -->
+                <span id="texte-copier-email">Copier</span>
+            </button>
         </p> <!-- le strong permet de mettre en gras-->
         <p> <strong> Ville : </strong> Lyon </p>
         <div class="liens-contact"> <!-- crée la class contact pour les travailler ensemble -->
-             <a href="docs/CV-Rivo-Dianzinga.pdf" download class="btn-contact">Télécharger mon CV</a> <!-- bouton Télécharger mon cv, il crée directement le lien avec le cv-->
-             <a href="https://github.com/RivoDianzinga" target="_blank" class="btn-contact">GitHub</a>
+             <a href="docs/CV-Rivo-Dianzinga.pdf" download class="btn-contact">
+                <i class="fa-solid fa-file-arrow-down"></i>
+                Télécharger mon CV
+            </a> <!-- bouton Télécharger mon cv, il crée directement le lien avec le cv-->
+             <a href="https://github.com/RivoDianzinga" target="_blank" class="btn-contact">
+                <i class="fa-brands fa-github"></i> <!--chaque icone a sa nom-->
+                GitHub
+            </a>
         </div>
     </section>
 </main>
