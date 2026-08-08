@@ -1,3 +1,6 @@
+html{ /* permet au navigateur de défiler doucement sur la page, lorsqu'on clique d'une section sur le menu jusqu'à la section elle-mème  */
+    scroll-behavior: smooth;
+}
 body {                               /* modifie le corps de la page */
     background-color: #e8f4fc;  /* couleur de fond */ 
     font-family: Arial, sans-serif; /* police de la page */ 
