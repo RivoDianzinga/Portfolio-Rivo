@@ -319,3 +319,20 @@ nav a:hover{ /* hover signifie de changer de style lorsqu'on clique sur un élt 
 .btn-contact:hover{
     background-color: navy;
 }
+/* la class de email et son bouton copier pour un meilleur responsive design */
+/* sur un large écran : pc ordinateur */
+.email-contact{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.email-contact p{
+    margin: 0;
+}
+/* sur un écran plus petit : tablettes et phones */
+@media(max-width: 600px){
+    .email-contact{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
