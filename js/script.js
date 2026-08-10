@@ -146,3 +146,43 @@ boutonExpertises.addEventListener("click", function() {
         afficherSection(expertises,boutonExpertises,"Masquer les expertises");
     }
 });
+// Fonctionnalité de la section active
+// on récupère toutes les sections à surveiller
+//const sections = document.querySelectorAll("main section"); // récupère toutes les sections dans le main
+//const liensNavigation = document.querySelectorAll("nav a"); // récupère tous les liens du menu de navigation
+//console.dir(sections);
+//console.dir(liensNavigation);
+//sections.forEach(function(section){
+//    console.log(section.id); // identifie le id de chaque section
+//});
+//liensNavigation.forEach(function(lien){
+//    console.log(lien.getAttribute("href")); // identifie le href de chaque lien
+//});
+// on demande ensuite au navigateur de signaler quand une section entre dans la zone visible
+// ici, on définit des options permettant à IntersectionObserver de regarder surtout la partie centrale de l'écran
+//const optionsObservation = {
+//    root: null,
+//    rootMargin: "-40% 0px -40% 0px", // réduit visuellement la zone d'observation
+//    threshold: 0 
+//};
+// ici on définit l'observateur, la section visible à son lien de navigation
+//const observateur = new IntersectionObserver(function(entrees){
+//    console.log(entrees);
+//    entrees.forEach(function(entree){
+//        console.log(entree.target.id, entree.isIntersecting);
+//        if (entree.isIntersecting){
+//            liensNavigation.forEach(function(lien){
+//                lien.classList.remove("actif"); // avant d'activer le nouveau lien, on nettoie l'ancien état actif
+//            });
+//            const idSection = entree.target.id;
+//            const lienActif = document.querySelector('nav a[href="#' + idSection + '"]');
+//            if (lienActif){
+//                lienActif.classList.add("actif");
+//            }
+//        }
+//    });
+//}, optionsObservation);
+//
+//sections.forEach(function(section){
+//    observateur.observe(section); // on demande au navigateur d'observer chacune des sections
+//});

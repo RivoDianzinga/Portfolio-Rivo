@@ -47,6 +47,11 @@ nav a{ /* modifie chaque élt du bloc de la navigation */
 nav a:hover{ /* hover signifie de changer de style lorsqu'on clique sur un élt de navigation */
     color: royalblue;
 }
+/*nav a.actif{ */ /* indique dans le menu quelle section est actuellement consultée */
+/*    color: darkblue; */
+/*    text-decoration: underline; */
+/*    text-underline-offset: 6px; */
+/*} */
 /* utilisé pour tester le fonctionnement de flex par des boites. */
 /*.test-flex{ */
 /*    display: flex; permet d'afficher des boites, transforme une colonne en une ligne */ 
@@ -338,4 +343,9 @@ nav a:hover{ /* hover signifie de changer de style lorsqu'on clique sur un élt 
         flex-direction: column;
         align-items: flex-start;
     }
+}
+/* la class pour les icones de section */
+section h2 i{
+    margin-right: 8px;
+    color: darkblue;
 }
