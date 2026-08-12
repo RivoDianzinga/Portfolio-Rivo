@@ -6,7 +6,7 @@ body {                               /* modifie le corps de la page */
     font-family: Arial, sans-serif; /* police de la page */ 
     line-height: 1.6; /* augmente l'espace entre les lignes de texte */ 
 }
-h1{                     /* style du titre principal, utilisé pour modifier un titre ou sous-tire h1.h6 */ 
+h1{                     /* style du titre principal, utilisé pour modifier un titre ou sous-titre h1.h6 */ 
     color: darkblue;  /* couleur du titre principal */ 
     text-align: center; /*  alignement du texte : left, right, center, justify */
 }
@@ -348,4 +348,21 @@ nav a:hover{ /* hover signifie de changer de style lorsqu'on clique sur un élt 
 section h2 i{
     margin-right: 8px;
     color: darkblue;
+}
+/* un css léger pour le javascript qui affiche dans le html */
+#liste-publications{
+    padding-left: 25px;
+}
+.publication-item{
+    margin-bottom: 3px;
+    line-height: 1.6;
+}
+.publication-item p{
+    margin: 5px 0;
+}
+.publication-doi{
+    color: #666;
+}
+#titre-publication{
+    margin-bottom: 30px;
 }

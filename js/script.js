@@ -19,6 +19,7 @@
 // bouton et son objet navigateur des publications
 const boutonPublications = document.getElementById("btn-publications"); // id du bouton concerné
 const publications = document.getElementById("publications-list"); // id de l'objet, c-à-d le div concerné
+const listePublication = document.getElementById("liste-publications"); // id html que javascript va utiliser pour renvoyer dans html
 
 // bouton et son objet navigateur des formations
 const boutonFormations = document.getElementById("btn-formations");
@@ -186,3 +187,217 @@ boutonExpertises.addEventListener("click", function() {
 //sections.forEach(function(section){
 //    observateur.observe(section); // on demande au navigateur d'observer chacune des sections
 //});
+// Logique d'application
+// Ici on utilise des données (publications) que Javascript envoie à HTML pour les afficher avec le CSS
+// On définit ici les publications comme des données objet pour javascript
+
+// ces 3 donneés publications suivantes sont écrites à la main ici dans javascript dans un 1er temps
+// mais, dans un second temps qui représente le cas pratique, ces publications sont 
+// dans le fichier json afin d'appliquer la logique d'une architecture orientée
+// où les données, la logique et l'interface sont séparées
+/* const publication2016 = {
+    id: "truflandier-2016-purification",
+    authors: [
+        "Truflandier, L. A.",
+        "Dianzinga, R. M",
+        "Bowler, D. R."
+    ],
+    title: "Communication: Generalized canonical purification for density matrix minimization",
+    journal: "The Journal of Chemical Physics",
+    volume: "144",
+    number: "9",
+    pages: "091102",
+    year: 2016,
+    doi: "10.1063/1.4943213"
+};
+const publication2020 = {
+    id: "truflandier-2020-perturbation",
+    authors: [
+        "Truflandier, L. A.",
+        "Dianzinga, R. M",
+        "Bowler, D. R."
+    ],
+    title: "Notes on density matrix perturbation theory",
+    journal: "The Journal of Chemical Physics",
+    volume: "153",
+    number: "16",
+    pages: "164105",
+    year: 2020,
+    doi: "10.1063/5.0022244"
+};
+const publication2022 = {
+    id: "bouchet-2022-theoretical",
+    authors: [
+        "Bouchet, J.",
+        "Dianzinga, R. M",
+        "Jomard, G."
+    ],
+    title: "Theoretical investigation of charged vacancies and clusters in UXO2 (X = La, Ce, Pu, Am)",
+    journal: "Journal of Applied Physics",
+    volume: "132",
+    number: "7",
+    pages: "075110",
+    year: 2022,
+    doi: "10.1063/5.0098635"
+}; */
+//
+
+//console.dir(publication2016);
+//console.log(publication2016.title);
+//console.log(publication2016.year);
+//console.log(publication2016.doi);
+//console.log(publication2016.authors);
+//console.log(publication2016.authors[1]);
+// Récupération du id du html
+//const publicationTest = document.getElementById("publication-test");
+
+/* ici on généralise tout dans une fonction
+// on généralie tout dans une fonction
+function afficherPublication(publication){
+// ici, chaque publication doit devenir un bloc unique, donc un div
+    const cartePublication = document.createElement("div");
+// on donne ensuite une classe
+    cartePublication.classList.add("publication-item");        
+// création du titre de la publication
+    const titrePublication = document.createElement("h3"); // dis au navigateur de créer un nouvel élt HTML <h3>
+// on lui donne ensuite comme texte, la donnée venant de l'objet 
+    titrePublication.textContent = publication.title;
+// ensuite, il faut l'insérer dans la carte
+    cartePublication.appendChild(titrePublication);
+// pareil pour les auteurs
+    const auteursPublication = document.createElement("p");
+    auteursPublication.textContent = publication.authors.join(", ");
+    cartePublication.appendChild(auteursPublication);
+// pareil pour le journal 
+//    const journalPublication = document.createElement("p");
+//    journalPublication.textContent = publication.journal;
+//    cartePublication.appendChild(journalPublication);
+// idem pour le volume
+//    const volumePublication = document.createElement("p");
+//    volumePublication.textContent = publication.volume;
+//    cartePublication.appendChild(volumePublication);
+// idem pour le nombre
+//    const numberPublication = document.createElement("p");
+//    numberPublication.textContent = publication.number;
+//    cartePublication.appendChild(numberPublication);
+// idem pour la page
+//    const pagesPublication = document.createElement("p");
+//    pagesPublication.textContent = publication.pages;
+//    cartePublication.appendChild(pagesPublication);
+// idem pour l'année
+//    const yearPublication = document.createElement("p");
+//    yearPublication.textContent = publication.year;
+//    cartePublication.appendChild(yearPublication);
+// au lieu de séparer le journal, le volume, le nombre, la page et l'année, on condense tout sur une seule ligne
+// Ligne principale de la référence
+    const referencePublication = document.createElement("p");
+    referencePublication.textContent = `${publication.journal}, ${publication.volume}(${publication.number}), ${publication.pages}(${publication.year})`;
+    cartePublication.appendChild(referencePublication);
+// idem pour le doi, on crée un l'adresse url
+    const doiPublication = document.createElement("p"); // crée un paragraphe
+    const lienDoi = document.createElement("a"); // crée une balise de lien
+    lienDoi.href = "https://doi.org/" + publication.doi;
+    lienDoi.textContent = "DOI : " + publication.doi;
+    lienDoi.target = "_blank";
+    lienDoi.rel = "noopener noreferrer";
+    doiPublication.appendChild(lienDoi);
+    cartePublication.appendChild(doiPublication);
+
+//    doiPublication.textContent = publication.doi;
+//    cartePublication.appendChild(doiPublication);   
+// et on met le tout dans le DOM
+//    publicationTest.appendChild(cartePublication); // une donnée métier est un composant visuel cohérent     
+    publications.appendChild(cartePublication); // ici c'est "publications" venant de html qui permet à javascript d'envoyer les données traitées au html
+};
+*/
+
+/* on généralise tout dans une fonction d'affichage dans l'ancein format du html */
+function afficherPublication(publication){
+// une publication devient un élt de liste li
+    const itemPublication = document.createElement("li");
+    itemPublication.classList.add("publication-item");
+// ligne principale de la référence
+    const referencePublication = document.createElement("p");
+// auteur mis en avant
+    const auteursPublication = document.createElement("span");
+    auteursPublication.textContent = "Dianzinga, R. M., et al. : ";
+// titre en italique
+    const titrePublication = document.createElement("em");
+    titrePublication.textContent = `"${publication.title}"`;
+// nom du journal
+    const journalPublication = document.createElement("span");
+    journalPublication.textContent = `, ${publication.journal} `;
+// volume en gras
+    const volumePublication = document.createElement("strong");
+    volumePublication.textContent = publication.volume;
+// numéro, pages et année
+    const detailsPublication = document.createElement("span");
+    detailsPublication.textContent = `(${publication.number}), ${publication.pages} (${publication.year})`;
+// Assemblage de la référence
+    referencePublication.appendChild(auteursPublication);
+    referencePublication.appendChild(titrePublication);
+    referencePublication.appendChild(journalPublication);
+    referencePublication.appendChild(volumePublication);
+    referencePublication.appendChild(detailsPublication);
+// Ligne DOI
+    const doiPublication = document.createElement("p");
+    doiPublication.classList.add("publication-doi");
+    const texteDoi = document.createElement("span");
+    texteDoi.textContent = "DOI : ";
+    const lienDoi = document.createElement("a");
+    lienDoi.href = "https://doi.org/" + publication.doi;
+    lienDoi.textContent = "Consulter la publication";
+    lienDoi.target = "_blank";
+    lienDoi.ref = "noopener noreferrer";
+    doiPublication.appendChild(texteDoi);
+    doiPublication.appendChild(lienDoi);
+// insertion dans la publication
+    itemPublication.appendChild(referencePublication);
+    itemPublication.appendChild(doiPublication);
+// insertion dans la liste                            
+    listePublication.appendChild(itemPublication);
+};
+
+//afficherPublication(publication2016);
+//afficherPublication(publication2020);
+//afficherPublication(publication2022);
+// collection de données des publications issus da javascript lui-mème
+// en suivant la séparation des responsabilités, ces mèmes données sont issues
+// dans publications.json, donc ici ils sont commentés
+/*
+const donneesPublications = [
+    publication2016,
+    publication2020,
+    publication2022
+];
+*/
+//console.dir(donneesPublications);
+//donneesPublications.forEach(function(publication){
+//    afficherPublication(publication);
+//});
+// ici les données publications sont dans publications.json selon la sépararation
+// des responsabilités
+fetch("Data/publications.json") // cherche la ressource de données publications.json dans le dossier data
+    .then(function(reponse){
+//        console.dir(reponse);
+        if(!reponse.ok){   // signifie "si la réponse n'est pas correcte"
+            throw new Error(
+                "Erreur HTTP : " + reponse.status
+            );
+        }
+
+        return reponse.json(); // objet http response, transforme la réponde json en données javascript
+    })
+    .then(function(donnees){
+//        console.dir(donnees); // donnees correspondant au vrai tableau
+        donnees.forEach(function(publication){
+            afficherPublication(publication); // c'est ici que javascript envoie au html d'afficher les données gràce à "publications" qui découle "publications-list" déjà présent dans le html
+        });
+    })
+    .catch(function(erreur){
+        console.error("Erreur lors du chargement des publications :", erreur); // signale au développeur qu'il y'a une erreur
+// on crée en dessous un message pour signaler aussi à l'utilisateur qu'il y'a une erreur        
+        const messageErreur = document.createElement("p");
+        messageErreur.textContent = "Impossible de charger les publications pour le moment. ";
+        publications.appendChild(messageErreur);
+    });
