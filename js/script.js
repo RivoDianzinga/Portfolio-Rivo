@@ -377,7 +377,7 @@ const donneesPublications = [
 //});
 // ici les données publications sont dans publications.json selon la sépararation
 // des responsabilités
-//fetch("Data/publications.json") // cherche la ressource de données publications.json dans le dossier data
+//fetch("Data/publications.json") // cherche la ressource de données publications.json dans le dossier data (qui n'est plus utile)
 //fetch("http://localhost:3000/api/publications") // on cherche à connecter le front-end aux données de l'API HTTP du back-end, sauf que c'est une adresse locale
 fetch("https://portfolio-rivo-api.onrender.com/api/publications") // adresse publique par Render afin que le front-end communique avec le back-end publiquement
     .then(function(reponse){
