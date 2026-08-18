@@ -380,6 +380,7 @@ const donneesPublications = [
 //fetch("Data/publications.json") // cherche la ressource de données publications.json dans le dossier data (qui n'est plus utile)
 //fetch("http://localhost:3000/api/publications") // on cherche à connecter le front-end aux données de l'API HTTP du back-end, sauf que c'est une adresse locale
 fetch("https://portfolio-rivo-api.onrender.com/api/publications") // adresse publique par Render afin que le front-end communique avec le back-end publiquement
+//fetch("http://localhost:3000/api/publications-db") ne doit surtout pas ètre envoyée sur Github
     .then(function(reponse){
 //        console.dir(reponse);
         if(!reponse.ok){   // signifie "si la réponse n'est pas correcte"
