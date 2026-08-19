@@ -357,7 +357,20 @@ function afficherPublication(publication){
 // insertion dans la liste                            
     listePublication.appendChild(itemPublication);
 };
-
+//
+/*
+Pour que PostgreSQL puisse réellement reprendre la main, il faut qu'avant d'afficher
+la nouvelle source, nous vidions la liste précédente, sinon les publications
+seront affichées 2 fois, et par le fallback et par PostgreSQL. D'où la nécessité
+de définir la fonction ci-dessous afficherListePublications
+*/
+function afficherListePublications(donnees){
+    listePublication.innerHTML = ""; // dit au navigateur, avant d'afficher cette 
+// nouvelle liste, enlève ce qui était déjà dans listePublication    
+    donnees.forEach(function(publication){
+        afficherPublication(publication);
+    });
+}
 //afficherPublication(publication2016);
 //afficherPublication(publication2020);
 //afficherPublication(publication2022);
@@ -375,6 +388,50 @@ const donneesPublications = [
 //donneesPublications.forEach(function(publication){
 //    afficherPublication(publication);
 //});
+/* 
+Compte tenue de la latence de l'API hébergée par le service gratuit de Render,
+on utilise une fonction de secours fallback qui toutefois, doit rester la source 
+secondaire des données de publications, et API postgreSQL la source primaire.
+On définit ci-dessous la function fallback qui utilise les données internes
+de data/publications-fallback.json
+La function ci-dessous chargerPublicationsFallback n'affiche pas les données
+de secours, elle ne fait que les récupérer depuis data/publications-fallback.json
+*/
+function chargerPublicationsFallback (){
+    console.log("Chargement des publications depuis le fallback JSON");
+    return fetch("data/publications-fallback.json")
+        .then(function(reponse){
+            if (!reponse.ok){
+                throw new Error("Erreur fallback HTTP : " + reponse.status);
+            }
+            return reponse.json();
+        });
+}
+//
+/*
+On définit ci -dessous un minuteur de 10s pour attendre la réponse de l'API Render
+avant d'afficher temporairement le Fallback
+*/
+let apiTerminee = false; // vérifie est-ce que la tentavie vers l'API est terminée ?
+let fallbackAffiche = false; // vérifie est-ce que le JSON de secours est déjà affiché ?
+const minuteurFallback = setTimeout(function(){
+    if (!apiTerminee){
+        console.log("API lente : tentative d'affichage du fallback JSON");
+        chargerPublicationsFallback()
+            .then(function(donneesFallback){
+                // on vérifie encore que l'API n'a pas répondu
+                // pendant le chargement du fallback
+                if(!apiTerminee){
+                    console.log("Affichage temporaire des publications depuis le fallback");
+                    fallbackAffiche = true;
+                    afficherListePublications(donneesFallback);
+                }
+            })
+            .catch(function(erreurFallback){
+                console.error("Erreur lors du chargement du fallback :", erreurFallback);
+            });
+    }
+}, 10000); // 10000 = 10 seconds
 // ici les données publications sont dans publications.json selon la sépararation
 // des responsabilités
 //fetch("Data/publications.json") // cherche la ressource de données publications.json dans le dossier data (qui n'est plus utile)
@@ -393,14 +450,35 @@ fetch("https://portfolio-rivo-api.onrender.com/api/publications") // adresse pub
     })
     .then(function(donnees){
 //        console.dir(donnees); // donnees correspondant au vrai tableau
-        donnees.forEach(function(publication){
-            afficherPublication(publication); // c'est ici que javascript envoie au html d'afficher les données gràce à "publications" qui découle "publications-list" déjà présent dans le html
-        });
+//        donnees.forEach(function(publication){
+//            afficherPublication(publication); // c'est ici que javascript envoie au html d'afficher les données gràce à "publications" qui découle "publications-list" déjà présent dans le html
+//        });
+        apiTerminee = true;
+        clearTimeout(minuteurFallback);
+        console.log("Publications chargées depuis PostgreSQL");
+        afficherListePublications(donnees);
     })
     .catch(function(erreur){
-        console.error("Erreur lors du chargement des publications :", erreur); // signale au développeur qu'il y'a une erreur
+//        console.error("Erreur lors du chargement des publications :", erreur); // signale au développeur qu'il y'a une erreur
 // on crée en dessous un message pour signaler aussi à l'utilisateur qu'il y'a une erreur        
-        const messageErreur = document.createElement("p");
-        messageErreur.textContent = "Impossible de charger les publications pour le moment. ";
-        publications.appendChild(messageErreur);
+        apiTerminee = true;
+        clearTimeout(minuteurFallback);
+        console.error("Erreur lors du chargement des publications depuis l'API :", erreur);
+        if (!fallbackAffiche){
+            console.log("Tentative de secours des publications avec le Fallback JSON");
+            chargerPublicationsFallback()
+                .then(function(donneesFallback){
+                    fallbackAffiche = true;
+                    console.log("Publications chargées depuis le Fallback JSON");
+                    afficherListePublications(donneesFallback);
+                })
+                .catch(function(erreurFallback){
+                    console.error("Le Fallback a également échoué :", erreurFallback);
+                    const messageErreur = document.createElement("p");
+                    messageErreur.textContent = "Impossible de charger les publications pour le moment. ";
+                    publications.appendChild(messageErreur);  
+                });                      
+        } else {
+            console.log("Le Fallback est déjà affiché : aucun rechargement nécessaire");
+        }
     });
