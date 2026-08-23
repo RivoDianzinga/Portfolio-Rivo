@@ -1,3 +1,4 @@
+/* Ici, on embellit la structure html de l'interface d'administration */
 body {
     margin: 0;
     font-family: Arial, sans-serif;
@@ -6,7 +7,6 @@ body {
 
 .admin-container {
     min-height: 100vh;
-
     display: flex;
     justify-content: center;
     align-items: center;
@@ -15,19 +15,13 @@ body {
 .admin-card {
     width: 100%;
     max-width: 420px;
-
     background: white;
-
     padding: 30px;
-
     border-radius: 10px;
-
-    box-shadow:
-        0 4px 15px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
 }
 
-h1,
-h2 {
+h1,h2 {
     text-align: center;
 }
 
@@ -47,23 +41,27 @@ label {
 
 input {
     padding: 10px;
-
     font-size: 16px;
-
     border: 1px solid #ccc;
     border-radius: 5px;
 }
 
 button {
     margin-top: 20px;
-
     padding: 11px;
-
     font-size: 16px;
-
     cursor: pointer;
 }
 
 .cache {
     display: none; /* cache la section dashbord admin */
+}
+
+#liste-admin-publications > div {
+    padding: 12px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+#liste-admin-publications button {
+    margin-top: 5px;
 }
