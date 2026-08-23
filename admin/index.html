@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+    <title>Administration - Portfolio Rivo</title>
+    <link rel="stylesheet" href="admin.css"> <!-- liaison avec le css-->
+</head>
+
+<body>
+    <main class="admin-container">
+        <section id="connexion-admin"
+                 class="admin-card"> <!-- actuellement visible -->
+            <h1>Administration du portfolio</h1>
+            <p class="admin-description">
+                Connectez-vous pour gérer les publications.
+            </p>
+            <form id="form-connexion"> <!-- form, label et input définissent le formulaire-->
+                <label for="email">
+                    E-mail
+                </label>
+                <input
+                    type="email"
+                    id="email"
+                    required      
+                >  <!-- required signifie que le champ (indentifiant) à saisir est obligatoire-->
+                <label for="password">
+                    Mot de passe
+                </label>
+                <input
+                    type="password"
+                    id="password"
+                    required
+                > <!--saisie masquée obligatoire du mot de passe -->
+                <button type="submit">
+                    Se connecter
+                </button> <!--une fois connecté, déclenche le javascript-->
+            </form>
+            <p id="message-connexion"></p>
+        </section>
+        <section id="dashboard-admin"
+                 class="admin-card cache"> <!-- admin-card cache signifie que le dashboard est initialement caché par le css-->
+            <h2>Gestion des publications</h2>
+            <p>
+                Authentification réussie.
+            </p>
+            <div id="liste-admin-publications"> <!-- une fois connecté, les 3 publications actuelles sont affichées dans l'administration -->
+                
+
+            </div>
+            <button id="btn-deconnexion">
+                Se déconnecter
+            </button>
+        </section> <!-- future interface CRUD-->
+    </main>
+    <script src="admin.js"></script> <!--liaison avec le javascript-->
+</body>
+</html>
