@@ -47,9 +47,72 @@
                 Authentification réussie.
             </p>
             <p id="message-dashboard"></p>
+           
+            <form id="form-modification" class="cache"> <!-- Ajout du formulaire de modification qui est à la base caché -->
+                <h3>Modifier la publication</h3>
+
+                <label for="modif-authors">Auteurs</label> <!-- champ auteurs à modifier -->
+                <textarea 
+                id="modif-authors"
+                rows="4"
+                required
+                ></textarea>
+
+                <label for="modif-title">Titre</label> <!-- champ titre à modifier -->
+                <input
+                type="text"
+                id="modif-title"
+                required
+                >
+
+                <label for="modif-journal">Journal</label> <!-- champ journal à modifier -->
+                <input
+                type="text"
+                id="modif-journal"
+                >
+
+                <label for="modif-volume">Volume</label> <!-- champ volume à modifier -->
+                <input
+                type="text"
+                id="modif-volume"
+                >
+
+                <label for="modif-number">Numéro</label> <!-- champ nombre à modifier -->
+                <input
+                type="text"
+                id="modif-number"
+                >
+
+                <label for="modif-pages">Pages</label> <!-- champ pages à modifier -->
+                <input
+                type="text"
+                id="modif-pages"
+                >
+
+                <label for="modif-year">Année</label> <!-- champ année à modifier -->
+                <input
+                type="number"
+                id="modif-year"
+                required
+                >
+
+                <label for="modif-doi">DOI</label> <!-- champ doi à modifier -->
+                <input
+                type="text"
+                id="modif-doi"
+                required
+                >
+
+                <button type="submit"> <!-- Bouton Enregistrer les modifications -->
+                    Enregistrer les modifications
+                </button>
+
+                <button type="button" id="btn-annuler-modification"> <!-- Bouton Annuler les modifications -->
+                    Annuler
+                </button>
+            </form>
 
             <div id="liste-admin-publications"> <!-- une fois connecté, les 3 publications actuelles sont affichées dans l'administration -->
-
 
             </div>
             <button id="btn-deconnexion">
