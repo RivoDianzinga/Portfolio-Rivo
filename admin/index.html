@@ -48,7 +48,83 @@
             </p>
             <p id="message-dashboard"></p>
            
-            <form id="form-modification" class="cache"> <!-- Ajout du formulaire de modification qui est à la base caché -->
+            <button type="button" id="btn-ouvrir-ajout">
+                Ajouter une publication
+            </button>
+
+            <form id="form-ajout" class="cache"> <!-- Ajout du formulaire pour ajouter une nouvelle publication, initialement invisible -->
+                <h3>Ajouter une publication</h3>
+
+                <label for="ajout-id">Identifiant technique</label>
+                <input
+                type="text"
+                id="ajout-id"
+                required
+                >
+
+                <label for="ajout-authors">Auteurs</label>
+                <textarea
+                id="ajout-authors"
+                rows="4"
+                required
+                ></textarea>
+
+                <label for="ajout-title">Titre</label>
+                <input
+                type="text"
+                id="ajout-title"
+                required
+                >
+
+                <label for="ajout-journal">Journal</label>
+                <input
+                type="text"
+                id="ajout-journal"
+                >
+
+                <label for="ajout-volume">Volume</label>
+                <input
+                type="text"
+                id="ajout-volume"
+                >
+
+                <label for="ajout-number">Numéro</label>
+                <input
+                type="text"
+                id="ajout-number"
+                >
+
+                <label for="ajout-pages">Pages</label>
+                <input
+                type="text"
+                id="ajout-pages"
+                >
+
+                <label for="ajout-year">Année</label>
+                <input
+                type="number"
+                id="ajout-year"
+                required
+                >
+
+                <label for="ajout-doi">DOI</label>
+                <input
+                type="text"
+                id="ajout-doi"
+                required
+                >
+
+                <button type="submit">
+                    Ajouter
+                </button>
+
+                <button type="button" id="btn-annuler-ajout">
+                    Annuler
+                </button>
+
+            </form>            
+
+            <form id="form-modification" class="cache"> <!-- Ajout du formulaire pour modifier une publication existante qui est à la base caché -->
                 <h3>Modifier la publication</h3>
 
                 <label for="modif-authors">Auteurs</label> <!-- champ auteurs à modifier -->

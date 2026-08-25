@@ -432,6 +432,10 @@ const minuteurFallback = setTimeout(function(){
             });
     }
 }, 10000); // 10000 = 10 seconds
+/*
+on définit ci-dessous le fecth du front-end qui va justement chercher les données 
+publications sur l'API créée par le back-end 
+*/
 // ici les données publications sont dans publications.json selon la sépararation
 // des responsabilités
 //fetch("Data/publications.json") // cherche la ressource de données publications.json dans le dossier data (qui n'est plus utile)

@@ -366,3 +366,8 @@ section h2 i{
 #titre-publication{
     margin-bottom: 30px;
 }
+.lien-admin{ /* le footer, est un texte normal, mais qui est lien cliquable vers la page admin */
+    color: inherit;
+    text-decoration: none;
+    cursor: default;
+}

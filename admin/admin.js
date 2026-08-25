@@ -21,7 +21,7 @@ const messageDashboard = document.querySelector("#message-dashboard");
 
 /*
 ci_dessous, les références javascript du formulaire de modification pour les 
-champs à modifier : fourmulaire, auteurs, titre, journal volume, nombre, pages, 
+champs à modifier : fourmulaire, auteurs, titre, journal, volume, nombre, pages, 
 année, doi
 */
 
@@ -47,6 +47,116 @@ const boutonAnnulerModification = document.querySelector("#btn-annuler-modificat
 
 let publicationEnCoursId = null; // cette variable réfère à la publication qu'on est 
 // entrain de modifier
+
+/*
+Ci-dessous les références javascript du formulaire pour ajouter une nouvelle 
+publication, pour les champs à ajouter : le formulaire lui-mème, les auteurs, le titre, 
+le journal, le volume, le nombre, les pages, l'année et le doi 
+*/
+const boutonOuvrirAjout = document.querySelector("#btn-ouvrir-ajout");
+
+const formAjout = document.querySelector("#form-ajout");
+
+const champAjoutId = document.querySelector("#ajout-id");
+
+const champAjoutAuthors = document.querySelector("#ajout-authors");
+
+const champAjoutTitle = document.querySelector("#ajout-title");
+
+const champAjoutJournal = document.querySelector("#ajout-journal");
+
+const champAjoutVolume = document.querySelector("#ajout-volume");
+
+const champAjoutNumber = document.querySelector("#ajout-number");
+
+const champAjoutPages = document.querySelector("#ajout-pages");
+
+const champAjoutYear = document.querySelector("#ajout-year");
+
+const champAjoutDoi = document.querySelector("#ajout-doi");
+
+const boutonAnnulerAjout = document.querySelector("#btn-annuler-ajout");
+
+/*
+Ci-dessous on définit le bouton qui ouvre le formulaire pour ajouter une nouvelle
+publication
+*/
+boutonOuvrirAjout.addEventListener("click",function() {
+        formAjout.reset();
+        formAjout.classList.remove("cache"); // ajouter une publication --> formulaire visible
+        messageDashboard.textContent = "";
+    }
+);
+
+/*
+Ci-dessous, on définit le bouton pour annuler l'ouverture du formulaire
+*/
+boutonAnnulerAjout.addEventListener("click", function() {
+        formAjout.classList.add("cache"); // Annuler l'ajout d'une nouvelle publication --> formulaire caché
+        formAjout.reset();
+    }
+);
+
+/*
+Et ci-dessous, on définit la fonction qui permet d'ajouter une nouvelle publication.
+Cette fonction utilise POST de SQL
+*/
+formAjout.addEventListener("submit", async function(event) {
+        event.preventDefault();
+        const token = sessionStorage.getItem("adminToken");
+        if (!token) {
+            messageDashboard.textContent = "Session administrateur absente.";
+               return;
+        }
+        const authors = champAjoutAuthors.value
+            .split("\n")
+            .map(function(auteur) {
+                return auteur.trim();
+            })
+            .filter(function(auteur) {
+                return auteur !== "";
+            });
+        const nouvellePublication = {
+            id: champAjoutId.value.trim(),
+            authors: authors,
+            title: champAjoutTitle.value.trim(),
+            journal: champAjoutJournal.value.trim(),
+            volume: champAjoutVolume.value.trim(),
+            number: champAjoutNumber.value.trim(),
+            pages: champAjoutPages.value.trim(),
+            year: Number(champAjoutYear.value),
+            doi: champAjoutDoi.value.trim()
+        };
+        try {
+            const reponse = await fetch(
+                "http://localhost:3000/api/publications",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": "Bearer " + token
+                    },
+                    body:
+                        JSON.stringify(nouvellePublication)
+                }
+            );
+            const donnees = await reponse.json();
+            if (!reponse.ok) {
+                messageDashboard.textContent =
+                    donnees.error ||
+                    "Impossible d'ajouter la publication.";
+                return;
+            }
+            messageDashboard.textContent = "Publication ajoutée avec succès.";
+            formAjout.reset();
+            formAjout.classList.add("cache");
+            chargerPublicationsAdmin();
+        } catch (erreur) {
+            console.error("Erreur lors de l'ajout :", erreur);
+            messageDashboard.textContent = "Impossible de contacter le serveur.";
+        }
+    }
+);
 
 /*
 Ci-dessous, on construit la fonction qui ouvre le formulaire de modification
