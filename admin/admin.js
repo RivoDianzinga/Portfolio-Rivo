@@ -1,4 +1,20 @@
 /*
+Ci-dessous, on définit une variable de URL qui déterminera si c'est Render ou c'est
+le localhost:3000 qui est utilisé. Cette variable est pratique, plutot que de
+commenter et décommenter à chaque fois. 
+*/
+const API_BASE_URL = 
+    window.location.hostname === "localhost" ||
+    window.location.hostname === "127.0.0.1"
+        ? "http://localhost:3000"
+        : "https://portfolio-rivo-api.onrender.com";
+
+/*
+En javascript, le signe "||" est un opérateur logique ou (or). Il est utilisé pour 
+dire si au moins, une des deux conditions est utilisée, le résultat est alors vrai.
+*/
+
+/*
 En dessous, nous déclarons nos références vers les élts HTML de connexion et publications
 on utilise "document.querySelector" car on  référence des classes de HTML
 */
@@ -129,7 +145,8 @@ formAjout.addEventListener("submit", async function(event) {
         };
         try {
             const reponse = await fetch(
-                "http://localhost:3000/api/publications",
+                `${API_BASE_URL}/api/publications`,
+//                "http://localhost:3000/api/publications",
                 {
                     method: "POST",
                     headers: {
@@ -208,8 +225,9 @@ formModification.addEventListener("submit", async function(event) {
         };
         try {
             const reponse = await fetch(
-                "http://localhost:3000/api/publications/"
-                + publicationEnCoursId,
+                `${API_BASE_URL}/api/publications/${encodeURIComponent(publicationEnCoursId)}`,
+//                "http://localhost:3000/api/publications/"
+//                + publicationEnCoursId,
                 {
                     method: "PUT",
                     headers: {
@@ -257,7 +275,8 @@ Ci dessous, on crée la fonction qui charge les publications une fois connecté
 async function chargerPublicationsAdmin() {
     try {
         const reponse = await fetch(
-            "http://localhost:3000/api/publications"
+            `${API_BASE_URL}/api/publications`
+//            "http://localhost:3000/api/publications"
         );
         if (!reponse.ok) {
             throw new Error(
@@ -316,7 +335,8 @@ async function supprimerPublication(id) {
     }
     try {
         const reponse = await fetch(
-            "http://localhost:3000/api/publications/" + id,
+            `${API_BASE_URL}/api/publications/${encodeURIComponent(id)}`,
+//            "http://localhost:3000/api/publications/" + id,
             {
                 method: "DELETE",
                 headers: {
@@ -354,7 +374,8 @@ formConnexion.addEventListener("submit", async function(event) {
     const password = champPassword.value;
     try {
         const reponse = await fetch(
-            "http://localhost:3000/api/admin/login",
+            `${API_BASE_URL}/api/admin/login`,
+//            "http://localhost:3000/api/admin/login",
             {
                 method: "POST",
                 headers: {

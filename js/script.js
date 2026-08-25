@@ -40,6 +40,17 @@ const texteCopierEmail = document.getElementById("texte-copier-email");
 const iconeCopierEmail = document.getElementById("icone-copier-email");
 //console.dir(boutonCopierEmail);
 
+/*
+Ci-dessous, on définit une variable de URL qui déterminera si c'est Render ou c'est
+le localhost:3000 qui est utilisé. Cette variable est pratique, plutot que de
+commenter et décommenter à chaque fois. 
+*/
+const API_BASE_URL = 
+    window.location.hostname === "localhost" ||
+    window.location.hostname === "127.0.0.1"
+        ? "http://localhost:3000"
+        : "https://portfolio-rivo-api.onrender.com";
+
 // objet navigateur crée par le navigateur lui-mème. pas besoin de les déclarer 
 // car ils existent déjà dans l'environnement javascript de la page
 // console.dir(navigator);
@@ -440,8 +451,9 @@ publications sur l'API créée par le back-end
 // des responsabilités
 //fetch("Data/publications.json") // cherche la ressource de données publications.json dans le dossier data (qui n'est plus utile)
 //fetch("http://localhost:3000/api/publications") // on cherche à connecter le front-end aux données de l'API HTTP du back-end, sauf que c'est une adresse locale
-fetch("https://portfolio-rivo-api.onrender.com/api/publications") // adresse publique par Render afin que le front-end communique avec le back-end publiquement
+//fetch("https://portfolio-rivo-api.onrender.com/api/publications") // adresse publique par Render afin que le front-end communique avec le back-end publiquement
 //fetch("http://localhost:3000/api/publications-db") ne doit surtout pas ètre envoyée sur Github
+fetch(`${API_BASE_URL}/api/publications`)
     .then(function(reponse){
 //        console.dir(reponse);
         if(!reponse.ok){   // signifie "si la réponse n'est pas correcte"
